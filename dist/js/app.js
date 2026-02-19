@@ -295,6 +295,21 @@ _modules_functions_js__WEBPACK_IMPORTED_MODULE_0__.burgerMenu();
 _modules_functions_js__WEBPACK_IMPORTED_MODULE_0__.popups();
 _modules_functions_js__WEBPACK_IMPORTED_MODULE_0__.phoneMask();
 
+/*==========================================================================
+header compact
+============================================================================*/
+function initHeaderCompact() {
+   const header = document.querySelector('.header');
+   if (!header) return;
+
+   window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+         header.classList.add('compact');
+      } else {
+         header.classList.remove('compact');
+      }
+   });
+}
 
 
 /*==========================================================================
@@ -474,15 +489,125 @@ function initFaqAccordion() {
    });
 }
 
+
+/*==========================================================================
+City
+============================================================================*/
+function initCityDropdown(selector = '.header__city') {
+   const cityBlocks = document.querySelectorAll(selector);
+   if (!cityBlocks.length) return;
+
+   cityBlocks.forEach(block => {
+      const button = block.querySelector('.header__city-button');
+      const list = block.querySelector('.header__city-list');
+
+      if (!button || !list) return;
+
+      const open = () => block.classList.add('is-open');
+      const close = () => block.classList.remove('is-open');
+      const toggle = () => block.classList.toggle('is-open');
+
+      button.addEventListener('click', (e) => {
+         e.stopPropagation();
+         toggle();
+      });
+
+      block.addEventListener('mouseenter', open);
+      block.addEventListener('mouseleave', close);
+   });
+
+   document.addEventListener('click', (e) => {
+      cityBlocks.forEach(block => {
+         if (!block.contains(e.target)) {
+            block.classList.remove('is-open');
+         }
+      });
+   });
+}
+
+
+/*==========================================================================
+Submenu
+============================================================================*/
+document.addEventListener('DOMContentLoaded', () => {
+   const menuItems = document.querySelectorAll('.menu__item.has-submenu');
+   const breakpoint = 992; // до этого значения считаем мобилкой
+
+   function isMobile() {
+      return window.innerWidth < breakpoint;
+   }
+
+   function closeAllSubmenus() {
+      menuItems.forEach(item => {
+         item.classList.remove('active');
+         const submenu = item.querySelector('.menu__submenu');
+         submenu?.classList.remove('is-opened');
+      });
+   }
+
+   menuItems.forEach(item => {
+      const arrow = item.querySelector('.menu__item-arrow');
+      const submenu = item.querySelector('.menu__submenu');
+
+      // ===== ПК (hover) =====
+      item.addEventListener('mouseenter', () => {
+         if (isMobile()) return;
+
+         item.classList.add('active');
+         submenu?.classList.add('is-opened');
+      });
+
+      item.addEventListener('mouseleave', () => {
+         if (isMobile()) return;
+
+         item.classList.remove('active');
+         submenu?.classList.remove('is-opened');
+      });
+
+      // ===== МОБ (click) =====
+      arrow?.addEventListener('click', (e) => {
+         if (!isMobile()) return;
+
+         e.preventDefault();
+         e.stopPropagation();
+
+         const isOpened = submenu.classList.contains('is-opened');
+
+         closeAllSubmenus();
+
+         if (!isOpened) {
+            item.classList.add('active');
+            submenu.classList.add('is-opened');
+         }
+      });
+   });
+
+   // Закрытие при клике вне меню (моб)
+   document.addEventListener('click', (e) => {
+      if (!isMobile()) return;
+
+      if (!e.target.closest('.menu')) {
+         closeAllSubmenus();
+      }
+   });
+
+   // При ресайзе — закрываем всё
+   window.addEventListener('resize', closeAllSubmenus);
+});
+
+
+
 /*==========================================================================
 Init
 ============================================================================*/
 document.addEventListener('DOMContentLoaded', () => {
+   initHeaderCompact();
    initServiceSliders();
    initRequestImageMove();
    initPartnersSliders();
    initSertificatesSliders();
    initFaqAccordion();
+   initCityDropdown();
 });
 
 
