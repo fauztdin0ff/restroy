@@ -313,6 +313,96 @@ function initHeaderCompact() {
 
 
 /*==========================================================================
+Move elements
+============================================================================*/
+function moveHeaderElements() {
+   const breakpoint = window.matchMedia('(max-width: 1000px)');
+
+   const actions = document.querySelector('.header__actions');
+   const contacts = document.querySelector('.header__contacts');
+   const menuBody = document.querySelector('.menu__body');
+
+   const headerTopBody = document.querySelector('.header__top-body');
+
+   if (!actions || !contacts || !menuBody || !headerTopBody) return;
+
+   function moveElements(e) {
+      if (e.matches) {
+         // <= 1000px → переносим в меню
+         if (!menuBody.contains(actions)) {
+            menuBody.append(actions);
+         }
+         if (!menuBody.contains(contacts)) {
+            menuBody.append(contacts);
+         }
+      } else {
+         // > 1000px → возвращаем обратно
+         if (!headerTopBody.contains(actions)) {
+            headerTopBody.insertBefore(actions, headerTopBody.querySelector('.header__contacts'));
+         }
+         if (!headerTopBody.contains(contacts)) {
+            headerTopBody.insertBefore(contacts, headerTopBody.querySelector('.header__button'));
+         }
+      }
+   }
+
+   // первичный запуск
+   moveElements(breakpoint);
+
+   // отслеживание изменения
+   breakpoint.addEventListener('change', moveElements);
+}
+
+
+/*==========================================================================
+Open menu
+============================================================================*/
+function initMenuToggle() {
+   const button = document.querySelector('.header__toggle');
+   const catalog = document.querySelector('.header__menu');
+   const body = document.body;
+
+   if (!button || !catalog) return;
+
+   const ACTIVE_CLASS = 'active';
+   const BODY_LOCK_CLASS = 'no-scroll';
+
+   const openCatalog = () => {
+      button.classList.add(ACTIVE_CLASS);
+      catalog.classList.add(ACTIVE_CLASS);
+      body.classList.add(BODY_LOCK_CLASS);
+   };
+
+   const closeCatalog = () => {
+      button.classList.remove(ACTIVE_CLASS);
+      catalog.classList.remove(ACTIVE_CLASS);
+      body.classList.remove(BODY_LOCK_CLASS);
+   };
+
+   const toggleCatalog = () => {
+      const isOpen = catalog.classList.contains(ACTIVE_CLASS);
+      isOpen ? closeCatalog() : openCatalog();
+   };
+
+   button.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleCatalog();
+   });
+
+   catalog.addEventListener('click', (e) => {
+      e.stopPropagation();
+   });
+
+   document.addEventListener('click', () => {
+      if (catalog.classList.contains(ACTIVE_CLASS)) {
+         closeCatalog();
+      }
+   });
+}
+
+
+
+/*==========================================================================
 Service sliders
 ============================================================================*/
 function initServiceSliders() {
@@ -602,6 +692,8 @@ Init
 ============================================================================*/
 document.addEventListener('DOMContentLoaded', () => {
    initHeaderCompact();
+   moveHeaderElements();
+   initMenuToggle();
    initServiceSliders();
    initRequestImageMove();
    initPartnersSliders();
