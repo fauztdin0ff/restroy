@@ -358,7 +358,121 @@ function initRequestImageMove() {
 }
 
 
+/*==========================================================================
+Videos
+============================================================================*/
+document.addEventListener('DOMContentLoaded', () => {
+   const videos = document.querySelectorAll('.video');
 
+   if (!videos.length) return;
+
+   videos.forEach(video => {
+      const preview = video.querySelector('.video__preview');
+      const playBtn = video.querySelector('.video__play');
+
+      const startVideo = () => {
+         const videoSrc = video.dataset.video;
+         if (!videoSrc) return;
+
+         if (video.classList.contains('video--active')) return;
+
+         video.classList.add('video--active');
+
+         const iframe = document.createElement('iframe');
+         iframe.src = videoSrc + '?autoplay=1';
+         iframe.setAttribute('frameborder', '0');
+         iframe.setAttribute('allowfullscreen', '');
+         iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen; picture-in-picture');
+         iframe.classList.add('video__iframe');
+
+         video.innerHTML = '';
+         video.appendChild(iframe);
+      };
+
+      preview.addEventListener('click', startVideo);
+      playBtn.addEventListener('click', startVideo);
+   });
+});
+
+
+/*==========================================================================
+Partners sliders
+============================================================================*/
+function initPartnersSliders() {
+   const partnersSliders = document.querySelectorAll('.partners__slider');
+
+   partnersSliders.forEach((sliderEl) => {
+
+      if (sliderEl.swiper) return;
+
+      new Swiper(sliderEl, {
+         slidesPerView: 'auto',
+         loop: true,
+         speed: 800,
+         spaceBetween: 20,
+         autoplay: {
+            delay: 1500,
+         }
+      });
+   });
+}
+
+/*==========================================================================
+Sertificates sliders
+============================================================================*/
+function initSertificatesSliders() {
+   const ertificatesSliders = document.querySelectorAll('.sertificates__slider');
+
+   ertificatesSliders.forEach((sliderEl) => {
+
+      if (sliderEl.swiper) return;
+
+      new Swiper(sliderEl, {
+         slidesPerView: 'auto',
+         loop: true,
+         speed: 800,
+         spaceBetween: 20,
+         navigation: {
+            prevEl: '.sertificates__prev',
+            nextEl: '.sertificates__next',
+         }
+      });
+   });
+}
+
+/*==========================================================================
+faq
+============================================================================*/
+function initFaqAccordion() {
+   const faqItems = document.querySelectorAll('.faq__item');
+   if (!faqItems.length) return;
+
+   faqItems.forEach(item => {
+      const question = item.querySelector('.faq__question');
+      const answer = item.querySelector('.faq__answer');
+
+      if (!question || !answer || item.dataset.inited) return;
+
+      question.addEventListener('click', () => {
+         const isActive = item.classList.contains('active');
+
+         faqItems.forEach(el => {
+            const elAnswer = el.querySelector('.faq__answer');
+            if (!elAnswer) return;
+
+            el.classList.remove('active');
+            elAnswer.style.maxHeight = null;
+         });
+
+         if (!isActive) {
+            item.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+         }
+      });
+
+      item.dataset.inited = 'true';
+   });
+}
 
 /*==========================================================================
 Init
@@ -366,7 +480,9 @@ Init
 document.addEventListener('DOMContentLoaded', () => {
    initServiceSliders();
    initRequestImageMove();
-
+   initPartnersSliders();
+   initSertificatesSliders();
+   initFaqAccordion();
 });
 
 
