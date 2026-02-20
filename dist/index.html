@@ -21,8 +21,8 @@
    <meta property="og:url" content="">
    <meta property="og:type" content="website">
    <!-- Styles -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css?_v=20260220015127" />
-   <link rel="stylesheet" href="css/style.min.css?_v=20260220015127">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="css/style.min.css?_v=333">
    <title>Главная</title>
 </head>
 
@@ -33,7 +33,7 @@
       <div class="header__top">
          <div class="header__top-body container">
             <a href="" class="header__logo" aria-label="На главную">
-               <picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt=""></picture>
+               <img src="img/logo.png" alt="">
             </a>
             <div class="header__actions">
 
@@ -243,14 +243,17 @@
                </div>
             </div>
             <div class="hero__image">
-               <picture><source srcset="img/hero.webp" type="image/webp"><img src="img/hero.png" alt=""></picture>
+               <picture>
+                  <source media="(max-width: 550px)" srcset="img/hero-mob.png">
+                  <img src="img/hero.png" alt="">
+               </picture>
             </div>
          </section>
 
          <section class="estimate">
             <div class="estimate__body container section-padding">
                <div class="estimate__image">
-                  <picture><source srcset="img/estimate.webp" type="image/webp"><img src="img/estimate.png" alt=""></picture>
+                  <img src="img/estimate.png" alt="">
                </div>
                <div class="estimate__text">
                   <h2 class="estimate__title section-title">
@@ -347,10 +350,10 @@
                         <div class="services__item-slider swiper">
                            <div class="swiper-wrapper">
                               <div class="services__item-slide swiper-slide">
-                                 <picture><source srcset="img/serv-1.webp" type="image/webp"><img src="img/serv-1.png" alt=""></picture>
+                                 <img src="img/serv-1.png" alt="">
                               </div>
                               <div class="services__item-slide swiper-slide">
-                                 <picture><source srcset="img/serv-2.webp" type="image/webp"><img src="img/serv-2.png" alt=""></picture>
+                                 <img src="img/serv-2.png" alt="">
                               </div>
                            </div>
                            <div class="services__item-buttons slider-buttons">
@@ -392,10 +395,10 @@
                         <div class="services__item-slider swiper">
                            <div class="swiper-wrapper">
                               <div class="services__item-slide swiper-slide">
-                                 <picture><source srcset="img/serv-2.webp" type="image/webp"><img src="img/serv-2.png" alt=""></picture>
+                                 <img src="img/serv-2.png" alt="">
                               </div>
                               <div class="services__item-slide swiper-slide">
-                                 <picture><source srcset="img/serv-1.webp" type="image/webp"><img src="img/serv-1.png" alt=""></picture>
+                                 <img src="img/serv-1.png" alt="">
                               </div>
                            </div>
                            <div class="services__item-buttons slider-buttons">
@@ -518,7 +521,7 @@
                   </div>
                </div>
                <div class="request__image">
-                  <picture><source srcset="img/cons.webp" type="image/webp"><img src="img/cons.png" alt=""></picture>
+                  <img src="img/cons.png" alt="">
                </div>
             </div>
          </section>
@@ -533,7 +536,7 @@
                <div class="cases__items">
                   <div class="case">
                      <div class="case__image">
-                        <picture><source srcset="img/cases/1.webp" type="image/webp"><img src="img/cases/1.png" alt=""></picture>
+                        <img src="img/cases/1.png" alt="">
                      </div>
                      <a href="" class="case__name">Роскошная квартира на Нащокинском переулке</a>
                      <div class="case__labels">
@@ -562,7 +565,7 @@
 
                   <div class="case">
                      <div class="case__image">
-                        <picture><source srcset="img/cases/2.webp" type="image/webp"><img src="img/cases/2.png" alt=""></picture>
+                        <img src="img/cases/2.png" alt="">
                      </div>
                      <a href="" class="case__name">Роскошная квартира на Нащокинском переулке</a>
                      <div class="case__labels">
@@ -591,7 +594,7 @@
 
                   <div class="case">
                      <div class="case__image">
-                        <picture><source srcset="img/cases/3.webp" type="image/webp"><img src="img/cases/3.png" alt=""></picture>
+                        <img src="img/cases/3.png" alt="">
                      </div>
                      <a href="" class="case__name">Роскошная квартира на Нащокинском переулке</a>
                      <div class="case__labels">
@@ -620,7 +623,7 @@
 
                   <div class="case">
                      <div class="case__image">
-                        <picture><source srcset="img/cases/4.webp" type="image/webp"><img src="img/cases/4.png" alt=""></picture>
+                        <img src="img/cases/4.png" alt="">
                      </div>
                      <a href="" class="case__name">Роскошная квартира на Нащокинском переулке</a>
                      <div class="case__labels">
@@ -657,16 +660,30 @@
                   <span class="text-blue">Ваше доверие</span> <br> – наша ценность
                </div>
                <div class="ceo__content">
+                  <div class="ceo__text-mob"></div>
                   <div class="ceo__image">
-                     <picture><source srcset="img/ceo.webp" type="image/webp"><img src="img/ceo.png" alt=""></picture>
+                     <img src="img/ceo.png" alt="">
                   </div>
                   <div class="ceo__text">
-                     <div class="ceo__quote">
-                        <img src="img/icons/icon-quote-open.svg" alt="">
-                     </div>
+
                      <div class="ceo__text-wrapper">
-                        <p>Ремонт квартир с нами – это история про людей. Мы делаем ремонт с 2008 года. Работаем по всем
-                           районам Петербурга.
+                        <blockquote>
+                           <div class="ceo__quote">
+                              <img src="img/icons/icon-quote-open.svg" alt="">
+                           </div>
+                           Ремонт квартир может приносить удовольствие, как покупка ценного подарка. Наша цель –
+                           организовать такой ремонт для вас.
+                           Безупречные стены и пол – это отлично, но для нас важнее видеть довольных, окруженных заботой
+                           клиентов.
+
+
+                           <div class="ceo__quote">
+                              <img src="img/icons/icon-quote-close.svg" alt="">
+                           </div>
+                        </blockquote>
+
+                        <p>Ремонт квартир с нами – это история про людей. Мы делаем ремонт с 2008 года. Работаем по
+                           всем районам Петербурга.
                            Новостройки, вторичное жилье, старый фонд – не имеет значения. Ремонт будет безупречным
                            потому, что у нас опытные
                            мастера и прорабы, внимательные менеджеры и сметчики. Мы работаем вместе годами. Слаженно,
@@ -685,26 +702,17 @@
                            быть? Мы придумали схему удаленной логистики. Для ремонта заказчику нужен только интернет.
                         </p>
 
-                        <p>
-                           Ремонт квартир может приносить удовольствие, как покупка ценного подарка. Наша цель –
-                           организовать такой ремонт для вас.
-                           Безупречные стены и пол – это отлично, но для нас важнее видеть довольных, окруженных заботой
-                           клиентов.
-                        </p>
 
                         <p>До встречи на вашем объекте!</p>
 
                         <i>С уважением, учредитель компании «Рестроймастер»</i>
                         <h3>Дмитрий Шадрин</h3>
                      </div>
-                     <div class="ceo__quote">
-                        <img src="img/icons/icon-quote-close.svg" alt="">
-                     </div>
                   </div>
                </div>
 
                <div class="ceo__banner">
-                  <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.png" alt=""></picture>
+                  <img src="img/banner.png" alt="">
                </div>
 
                <div class="ceo__request">
@@ -743,7 +751,7 @@
 
                      <a href="" class="article-preview">
                         <div class="article-preview__image">
-                           <picture><source srcset="img/news/news-1.webp" type="image/webp"><img src="img/news/news-1.png" alt=""></picture>
+                           <img src="img/news/news-1.png" alt="">
                         </div>
                         <div class="article-preview__date">30.11.2025</div>
                         <div class="article-preview__name">
@@ -760,7 +768,7 @@
 
                      <a href="" class="article-preview">
                         <div class="article-preview__image">
-                           <picture><source srcset="img/news/news-2.webp" type="image/webp"><img src="img/news/news-2.png" alt=""></picture>
+                           <img src="img/news/news-2.png" alt="">
                         </div>
                         <div class="article-preview__date">30.11.2025</div>
                         <div class="article-preview__name">
@@ -799,7 +807,7 @@
 
                      <a href="" class="article-preview">
                         <div class="article-preview__image">
-                           <picture><source srcset="img/news/news-3.webp" type="image/webp"><img src="img/news/news-3.png" alt=""></picture>
+                           <img src="img/news/news-3.png" alt="">
                         </div>
                         <div class="article-preview__date">30.11.2025</div>
                         <div class="article-preview__name">
@@ -816,7 +824,7 @@
 
                      <a href="" class="article-preview">
                         <div class="article-preview__image">
-                           <picture><source srcset="img/news/news-4.webp" type="image/webp"><img src="img/news/news-4.png" alt=""></picture>
+                           <img src="img/news/news-4.png" alt="">
                         </div>
                         <div class="article-preview__date">30.11.2025</div>
                         <div class="article-preview__name">
@@ -831,7 +839,7 @@
 
                      <a href="" class="article-preview">
                         <div class="article-preview__image">
-                           <picture><source srcset="img/news/news-5.webp" type="image/webp"><img src="img/news/news-5.png" alt=""></picture>
+                           <img src="img/news/news-5.png" alt="">
                         </div>
                         <div class="article-preview__date">30.11.2025</div>
                         <div class="article-preview__name">
@@ -898,7 +906,7 @@
                   </div>
                </div>
                <div class="request__image">
-                  <picture><source srcset="img/cons-2.webp" type="image/webp"><img src="img/cons-2.png" alt=""></picture>
+                  <img src="img/cons-2.png" alt="">
                </div>
             </div>
          </section>
@@ -910,7 +918,7 @@
                   <div class="videos__items">
                      <div class="video" data-video="https://rutube.ru/play/embed/7e53e767a8d65120d1354ffb941e1771/">
                         <div class="video__preview">
-                           <picture><source srcset="img/video-poster-1.webp" type="image/webp"><img src="img/video-poster-1.png" alt=""></picture>
+                           <img src="img/video-poster-1.png" alt="">
                            <button class="video__play">
                               <span></span>
                               <svg>
@@ -921,7 +929,7 @@
                      </div>
                      <div class="video" data-video="https://rutube.ru/play/embed/7e53e767a8d65120d1354ffb941e1771/">
                         <div class="video__preview">
-                           <picture><source srcset="img/video-poster-2.webp" type="image/webp"><img src="img/video-poster-2.png" alt=""></picture>
+                           <img src="img/video-poster-2.png" alt="">
                            <button class="video__play">
                               <span></span>
                               <svg>
@@ -955,28 +963,28 @@
                   <div class="partners__slider swiper">
                      <div class="swiper-wrapper">
                         <div class="partners__slide swiper-slide">
-                           <picture><source srcset="img/partners/logo-1.webp" type="image/webp"><img src="img/partners/logo-1.png" alt=""></picture>
+                           <img src="img/partners/logo-1.png" alt="">
                         </div>
                         <div class="partners__slide swiper-slide">
-                           <picture><source srcset="img/partners/logo-2.webp" type="image/webp"><img src="img/partners/logo-2.png" alt=""></picture>
+                           <img src="img/partners/logo-2.png" alt="">
                         </div>
                         <div class="partners__slide swiper-slide">
-                           <picture><source srcset="img/partners/logo-3.webp" type="image/webp"><img src="img/partners/logo-3.png" alt=""></picture>
+                           <img src="img/partners/logo-3.png" alt="">
                         </div>
                         <div class="partners__slide swiper-slide">
-                           <picture><source srcset="img/partners/logo-4.webp" type="image/webp"><img src="img/partners/logo-4.png" alt=""></picture>
+                           <img src="img/partners/logo-4.png" alt="">
                         </div>
                         <div class="partners__slide swiper-slide">
-                           <picture><source srcset="img/partners/logo-1.webp" type="image/webp"><img src="img/partners/logo-1.png" alt=""></picture>
+                           <img src="img/partners/logo-1.png" alt="">
                         </div>
                         <div class="partners__slide swiper-slide">
-                           <picture><source srcset="img/partners/logo-2.webp" type="image/webp"><img src="img/partners/logo-2.png" alt=""></picture>
+                           <img src="img/partners/logo-2.png" alt="">
                         </div>
                         <div class="partners__slide swiper-slide">
-                           <picture><source srcset="img/partners/logo-3.webp" type="image/webp"><img src="img/partners/logo-3.png" alt=""></picture>
+                           <img src="img/partners/logo-3.png" alt="">
                         </div>
                         <div class="partners__slide swiper-slide">
-                           <picture><source srcset="img/partners/logo-4.webp" type="image/webp"><img src="img/partners/logo-4.png" alt=""></picture>
+                           <img src="img/partners/logo-4.png" alt="">
                         </div>
                      </div>
                   </div>
@@ -1005,28 +1013,28 @@
                   <div class="sertificates__slider swiper">
                      <div class="swiper-wrapper">
                         <div class="sertificates__slide swiper-slide">
-                           <picture><source srcset="img/sertificates/1.webp" type="image/webp"><img src="img/sertificates/1.png" alt=""></picture>
+                           <img src="img/sertificates/1.png" alt="">
                         </div>
                         <div class="sertificates__slide swiper-slide">
-                           <picture><source srcset="img/sertificates/2.webp" type="image/webp"><img src="img/sertificates/2.png" alt=""></picture>
+                           <img src="img/sertificates/2.png" alt="">
                         </div>
                         <div class="sertificates__slide swiper-slide">
-                           <picture><source srcset="img/sertificates/3.webp" type="image/webp"><img src="img/sertificates/3.png" alt=""></picture>
+                           <img src="img/sertificates/3.png" alt="">
                         </div>
                         <div class="sertificates__slide swiper-slide">
-                           <picture><source srcset="img/sertificates/4.webp" type="image/webp"><img src="img/sertificates/4.png" alt=""></picture>
+                           <img src="img/sertificates/4.png" alt="">
                         </div>
                         <div class="sertificates__slide swiper-slide">
-                           <picture><source srcset="img/sertificates/1.webp" type="image/webp"><img src="img/sertificates/1.png" alt=""></picture>
+                           <img src="img/sertificates/1.png" alt="">
                         </div>
                         <div class="sertificates__slide swiper-slide">
-                           <picture><source srcset="img/sertificates/2.webp" type="image/webp"><img src="img/sertificates/2.png" alt=""></picture>
+                           <img src="img/sertificates/2.png" alt="">
                         </div>
                         <div class="sertificates__slide swiper-slide">
-                           <picture><source srcset="img/sertificates/3.webp" type="image/webp"><img src="img/sertificates/3.png" alt=""></picture>
+                           <img src="img/sertificates/3.png" alt="">
                         </div>
                         <div class="sertificates__slide swiper-slide">
-                           <picture><source srcset="img/sertificates/4.webp" type="image/webp"><img src="img/sertificates/4.png" alt=""></picture>
+                           <img src="img/sertificates/4.png" alt="">
                         </div>
                      </div>
                   </div>
@@ -1154,7 +1162,7 @@
    <div class="footer__body container">
       <div class="footer__top">
          <div class="footer__logo">
-            <picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt=""></picture>
+            <img src="img/logo.png" alt="">
          </div>
          <search class="footer__search">
             <form class="footer__search-form">
@@ -1324,8 +1332,8 @@
    </div>
    
 
-   <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js?_v=20260220015127"></script>
-   <script src="js/app.js?_v=20260220015127"></script>
+   <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+   <script src="js/app.js?_v=333"></script>
 </body>
 
 </html>

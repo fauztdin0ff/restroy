@@ -319,40 +319,38 @@ function moveHeaderElements() {
    const breakpoint = window.matchMedia('(max-width: 1000px)');
 
    const actions = document.querySelector('.header__actions');
+   const button = document.querySelector('.header__button');
    const contacts = document.querySelector('.header__contacts');
-   const menuBody = document.querySelector('.menu__body');
+   const toggle = document.querySelector('.header__toggle');
 
+   const menuBody = document.querySelector('.menu__body');
    const headerTopBody = document.querySelector('.header__top-body');
 
-   if (!actions || !contacts || !menuBody || !headerTopBody) return;
+   if (!actions || !button || !contacts || !toggle || !menuBody || !headerTopBody) return;
 
    function moveElements(e) {
       if (e.matches) {
-         // <= 1000px → переносим в меню
+         // Мобилка
          if (!menuBody.contains(actions)) {
             menuBody.append(actions);
          }
-         if (!menuBody.contains(contacts)) {
-            menuBody.append(contacts);
+         if (!menuBody.contains(button)) {
+            menuBody.append(button);
          }
       } else {
-         // > 1000px → возвращаем обратно
          if (!headerTopBody.contains(actions)) {
-            headerTopBody.insertBefore(actions, headerTopBody.querySelector('.header__contacts'));
+            headerTopBody.insertBefore(actions, contacts);
          }
-         if (!headerTopBody.contains(contacts)) {
-            headerTopBody.insertBefore(contacts, headerTopBody.querySelector('.header__button'));
+
+         if (!headerTopBody.contains(button)) {
+            headerTopBody.insertBefore(button, toggle);
          }
       }
    }
 
-   // первичный запуск
    moveElements(breakpoint);
-
-   // отслеживание изменения
    breakpoint.addEventListener('change', moveElements);
 }
-
 
 /*==========================================================================
 Open menu
@@ -462,6 +460,33 @@ function initRequestImageMove() {
    });
 }
 
+/*==========================================================================
+Move quote
+============================================================================*/
+function moveCeoQuote() {
+   const breakpoint = window.matchMedia('(max-width: 767px)');
+
+   const blockquote = document.querySelector('.ceo__text blockquote');
+   const textWrapper = document.querySelector('.ceo__text-wrapper');
+   const textMob = document.querySelector('.ceo__text-mob');
+
+   if (!blockquote || !textWrapper || !textMob) return;
+
+   function moveQuote(e) {
+      if (e.matches) {
+         if (!textMob.contains(blockquote)) {
+            textMob.append(blockquote);
+         }
+      } else {
+         if (!textWrapper.contains(blockquote)) {
+            textWrapper.insertBefore(blockquote, textWrapper.firstChild);
+         }
+      }
+   }
+
+   moveQuote(breakpoint);
+   breakpoint.addEventListener('change', moveQuote);
+}
 
 /*==========================================================================
 Videos
@@ -621,7 +646,7 @@ Submenu
 ============================================================================*/
 document.addEventListener('DOMContentLoaded', () => {
    const menuItems = document.querySelectorAll('.menu__item.has-submenu');
-   const breakpoint = 992; // до этого значения считаем мобилкой
+   const breakpoint = 992;
 
    function isMobile() {
       return window.innerWidth < breakpoint;
@@ -639,7 +664,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const arrow = item.querySelector('.menu__item-arrow');
       const submenu = item.querySelector('.menu__submenu');
 
-      // ===== ПК (hover) =====
       item.addEventListener('mouseenter', () => {
          if (isMobile()) return;
 
@@ -654,7 +678,6 @@ document.addEventListener('DOMContentLoaded', () => {
          submenu?.classList.remove('is-opened');
       });
 
-      // ===== МОБ (click) =====
       arrow?.addEventListener('click', (e) => {
          if (!isMobile()) return;
 
@@ -672,7 +695,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
    });
 
-   // Закрытие при клике вне меню (моб)
    document.addEventListener('click', (e) => {
       if (!isMobile()) return;
 
@@ -681,7 +703,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
    });
 
-   // При ресайзе — закрываем всё
    window.addEventListener('resize', closeAllSubmenus);
 });
 
@@ -697,6 +718,7 @@ document.addEventListener('DOMContentLoaded', () => {
    initServiceSliders();
    initRequestImageMove();
    initPartnersSliders();
+   moveCeoQuote();
    initSertificatesSliders();
    initFaqAccordion();
    initCityDropdown();
