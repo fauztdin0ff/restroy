@@ -302,13 +302,12 @@ function initHeaderCompact() {
    const header = document.querySelector('.header');
    if (!header) return;
 
-   window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-         header.classList.add('compact');
-      } else {
-         header.classList.remove('compact');
-      }
-   });
+   const updateHeader = () => {
+      header.classList.toggle('compact', window.scrollY > 10);
+   };
+
+   updateHeader();
+   window.addEventListener('scroll', updateHeader);
 }
 
 
@@ -707,6 +706,46 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+/*==========================================================================
+Grab table
+============================================================================*/
+function initDragScroll() {
+   const wrapper = document.querySelector(".tariffs__wrapper");
+   if (!wrapper) return;
+
+   let isDown = false;
+   let startX;
+   let scrollLeft;
+
+   wrapper.addEventListener("mousedown", (e) => {
+      isDown = true;
+      wrapper.classList.add("dragging");
+
+      startX = e.pageX;
+      scrollLeft = wrapper.scrollLeft;
+
+      e.preventDefault();
+   });
+
+   window.addEventListener("mouseup", () => {
+      isDown = false;
+      wrapper.classList.remove("dragging");
+   });
+
+   window.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+
+      const x = e.pageX;
+      const walk = (x - startX) * 1.5; // скорость
+      wrapper.scrollLeft = scrollLeft - walk;
+   });
+
+   wrapper.addEventListener("mouseleave", () => {
+      isDown = false;
+      wrapper.classList.remove("dragging");
+   });
+}
+
 
 /*==========================================================================
 Init
@@ -722,6 +761,8 @@ document.addEventListener('DOMContentLoaded', () => {
    initSertificatesSliders();
    initFaqAccordion();
    initCityDropdown();
+   initDragScroll();
+
 });
 
 

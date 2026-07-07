@@ -13,7 +13,7 @@
          d="M5.734.203c.27-.27.708-.27.978 0l4.149 4.148a.692.692 0 0 1 0 .978L6.712 9.478a.691.691 0 0 1-.978-.978l2.969-2.968H.69a.691.691 0 1 1 0-1.383h8.012L5.734 1.18a.691.691 0 0 1 0-.977Z"
          fill="currentColor" />
    </svg><svg fill="none" viewBox="0 0 15 15" id="icon-arrow-diagonal" xmlns="http://www.w3.org/2000/svg">
-      <path d="M1.03 13.572 14 .775m0 0v13m0-13H0" stroke="#F8F0EA" stroke-width="1.55" />
+      <path d="M1.03 13.572 14 .775m0 0v13m0-13H0" stroke="currentColor" stroke-width="1.55" />
    </svg><svg fill="none" viewBox="0 0 19 20" id="icon-building" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#ca)">
          <path d="M12.309 19h6.063V8.65L6.245 5.2V1H2v18h6.064v-6h4.245v6Z" fill="currentColor" />
