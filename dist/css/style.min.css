@@ -2225,6 +2225,21 @@ Cases
     grid-template-columns: 1fr;
   }
 }
+.cases__button {
+  margin-top: 40px;
+}
+.cases__button .btn-blur {
+  justify-content: center;
+  background: #243064;
+  color: #fff;
+  width: 100%;
+}
+@media (hover: hover) {
+  .cases__button .btn-blur:hover {
+    background: #222222;
+    color: #fff;
+  }
+}
 
 .case__image {
   width: 100%;
@@ -3492,6 +3507,9 @@ Packages
   display: flex;
   flex-direction: column;
 }
+.packages__card:first-child {
+  background: var(--color-primary);
+}
 .packages__card-image {
   aspect-ratio: 240/160;
   margin-bottom: 23px;
@@ -3773,7 +3791,7 @@ Price
 }
 .tariffs__table {
   border-collapse: collapse;
-  min-width: 840px;
+  min-width: 863px;
   width: 100%;
 }
 .tariffs__table thead tr {
@@ -3827,7 +3845,7 @@ Price
 @media (width < 767px) {
   .tariffs__table thead tr th {
     font-size: 16px;
-    padding: 10px 16px 28px;
+    padding: 10px 10px 28px;
   }
   .tariffs__table thead tr th:first-child {
     min-width: 140px;
