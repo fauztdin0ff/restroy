@@ -716,36 +716,37 @@ function initTariffsScrollButtons() {
 
    if (!wrapper || !prevBtn || !nextBtn) return;
 
-   let rafId = null;
-   let direction = 0;
+   const STEP = 300; // можно 250–350 подобрать под дизайн
 
-   const animate = () => {
-      wrapper.scrollLeft += direction * 8;
-      rafId = requestAnimationFrame(animate);
-   };
+   function updateButtons() {
+      const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
 
-   const start = (dir) => {
-      if (rafId) return;
-      direction = dir;
-      animate();
-   };
+      prevBtn.disabled = wrapper.scrollLeft <= 1;
+      nextBtn.disabled = wrapper.scrollLeft >= maxScroll - 1;
+   }
 
-   const stop = () => {
-      cancelAnimationFrame(rafId);
-      rafId = null;
-   };
-
-   [
-      [prevBtn, -1],
-      [nextBtn, 1]
-   ].forEach(([btn, dir]) => {
-      btn.addEventListener("mousedown", () => start(dir));
-      btn.addEventListener("touchstart", () => start(dir), { passive: true });
-
-      ["mouseup", "mouseleave", "touchend", "touchcancel"].forEach(event => {
-         btn.addEventListener(event, stop);
+   prevBtn.addEventListener("click", () => {
+      wrapper.scrollBy({
+         left: -Math.min(STEP, wrapper.scrollLeft),
+         behavior: "smooth",
       });
    });
+
+   nextBtn.addEventListener("click", () => {
+      const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+      const remaining = maxScroll - wrapper.scrollLeft;
+
+      wrapper.scrollBy({
+         left: Math.min(STEP, remaining),
+         behavior: "smooth",
+      });
+   });
+
+   wrapper.addEventListener("scroll", updateButtons);
+   window.addEventListener("resize", updateButtons);
+   new ResizeObserver(updateButtons).observe(wrapper);
+
+   updateButtons();
 }
 
 

@@ -3672,7 +3672,9 @@ Price
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  user-select: none;
   margin-bottom: 50px;
+  pointer-events: none;
 }
 @media (width < 980px) {
   .tariffs__head {
@@ -3685,6 +3687,8 @@ Price
   }
 }
 .tariffs__scroll {
+  user-select: none;
+  pointer-events: all;
   display: none;
 }
 @media (width < 1150px) {
@@ -3701,10 +3705,12 @@ Price
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 .tariffs__scroll-prev svg, .tariffs__scroll-next svg {
   width: 50%;
   height: 50%;
+  user-select: none;
 }
 @media (width < 767px) {
   .tariffs__scroll-prev, .tariffs__scroll-next {
