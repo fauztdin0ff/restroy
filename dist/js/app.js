@@ -707,6 +707,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /*==========================================================================
+Scroll table
+============================================================================*/
+function initTariffsScrollButtons() {
+   const wrapper = document.querySelector(".tariffs__wrapper");
+   const prevBtn = document.querySelector(".tariffs__scroll-prev");
+   const nextBtn = document.querySelector(".tariffs__scroll-next");
+
+   if (!wrapper || !prevBtn || !nextBtn) return;
+
+   let rafId = null;
+   let direction = 0;
+
+   const animate = () => {
+      wrapper.scrollLeft += direction * 8;
+      rafId = requestAnimationFrame(animate);
+   };
+
+   const start = (dir) => {
+      if (rafId) return;
+      direction = dir;
+      animate();
+   };
+
+   const stop = () => {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+   };
+
+   [
+      [prevBtn, -1],
+      [nextBtn, 1]
+   ].forEach(([btn, dir]) => {
+      btn.addEventListener("mousedown", () => start(dir));
+      btn.addEventListener("touchstart", () => start(dir), { passive: true });
+
+      ["mouseup", "mouseleave", "touchend", "touchcancel"].forEach(event => {
+         btn.addEventListener(event, stop);
+      });
+   });
+}
+
+
+/*==========================================================================
 Init
 ============================================================================*/
 document.addEventListener('DOMContentLoaded', () => {
@@ -720,7 +763,7 @@ document.addEventListener('DOMContentLoaded', () => {
    initSertificatesSliders();
    initFaqAccordion();
    initCityDropdown();
-
+   initTariffsScrollButtons();
 });
 
 
